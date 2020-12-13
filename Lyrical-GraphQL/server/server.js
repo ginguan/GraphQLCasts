@@ -6,9 +6,9 @@ const bodyParser = require('body-parser');
 const schema = require('./schema/schema');
 
 const app = express();
-
+//mongodb+srv://ginguan:Krzg4U8clVS03yN8@lyric.moqk1.mongodb.net/<dbname>?retryWrites=true&w=majority
 // Replace with your mongoLab URI
-const MONGO_URI = 'mongodb://stephen:stephen@ds021182.mlab.com:21182/lyricaldb';
+const MONGO_URI = 'mongodb+srv://ginguan:Krzg4U8clVS03yN8@lyric.moqk1.mongodb.net/lyricaldb?retryWrites=true&w=majority';
 if (!MONGO_URI) {
   throw new Error('You must provide a MongoLab URI');
 }
@@ -20,6 +20,7 @@ mongoose.connection
     .on('error', error => console.log('Error connecting to MongoLab:', error));
 
 app.use(bodyParser.json());
+//
 app.use('/graphql', expressGraphQL({
   schema,
   graphiql: true
